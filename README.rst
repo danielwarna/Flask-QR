@@ -1,8 +1,8 @@
 ==============
-Flask QR
+Flask-QR
 ==============
 
-This is simple extension for generating and displaying QR codes with flask.
+This is simple extension for generating and displaying QR codes with 'flask'_.
 
 .. _flask: http://flask.pocoo.org
 
@@ -19,30 +19,21 @@ or alternatively if you have pip installed:
 
     $ pip install Flask-QR
 
-How to Use
+Quickstart
 ----------
 
 Initialize with flask application and default parameters:
 ::
 
-    qr = QR(app,
-            mode="google",
-            location="/qr/",
-            errorCorrect='M',
-            margin=4
-            )
+    qr = QR(app, mode="google")
 
 Then in your template:
 ::
 
     {{ 'I am a Qr-Code' | qrFor }}
 
-Bigger and adult:
-::
 
-    {{ 'I am another bigger qrcode' | qrFor(400) }}
-
-Parameters
+Documentation
 ~~~~~~~~~~
 
-All parameters are described in the documentation...(TODO: Link when documentations are up)
+The full documentation is available here. (TODO, link to docs)

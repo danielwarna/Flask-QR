@@ -8,7 +8,7 @@ from setuptools import setup
 setup(
     name='Flask-QR',
     version='0.1.0',
-    url='http://example.com/',
+    url='https://github.com/danielwarna/Flask-QR/',
     license='BSD',
     author='Daniel Warna',
     author_email='daniel@danielwarna.com',
