@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Flask-QR example</title>
+    </head>
+
+    <body>
+    <h1>Flask-QR example</h1>
+    <h2> Gooogle.com </h2>
+    {{ 'http://www.google.com' | qr_for }}
+    <h2> a bigger one </h2>
+    {{ 'Hello World' | qr_for(300) }}
+    <h2> More data </h2>
+    {{ 'This_is_.a_very._big_and loooooong qr 123456789123456789' | qr_for }}
+
+    <h2> Another test </h2>
+    {{ "abcdef" | qr_for}}
+            
+    </body>
+</html>
