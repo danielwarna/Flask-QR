@@ -1,6 +1,6 @@
-==============
+========
 Flask-QR
-==============
+========
 
 This is simple extension for generating and displaying QR codes with 'flask'_.
 
@@ -34,6 +34,6 @@ Then in your template:
 
 
 Documentation
-~~~~~~~~~~
+~~~~~~~~~~~~~
 
 The full documentation is available here. (TODO, link to docs)
