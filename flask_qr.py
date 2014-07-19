@@ -4,7 +4,6 @@ import os.path
 import urllib
 
 import qrcode
-from qrcode.image.pure import PymagingImage
 
 # Find the stack on which we want to store the database connection.
 # Starting with Flask 0.9, the _app_ctx_stack is the correct one,
@@ -37,7 +36,6 @@ class QR(object):
         if mode == "google":
             self.mode = mode
             import qrcode
-            from qrcode.image.pure import PymagingImage
         else:
             self.mode = "local"
 
@@ -100,7 +98,7 @@ class QR(object):
             #filePath = os.path.join(self.app.qr_folder, fileName)
             f = open(filePath, "w")
             #Generate qr and write it to file.
-            qr = qrcode.make(url, image_factory=PymagingImage, error_correction=self.errorCodes[self.errorLevel], border=self.margin)
+            qr = qrcode.make(url, error_correction=self.errorCodes[self.errorLevel], border=self.margin)
             #qr._img = qr._img.resize(300, 150,resize_canvas=True)1
             qr.save(f)
             f.close()

@@ -23,14 +23,9 @@ setup(
     install_requires=[
         'Flask',
         'qrcode',
-        'pymaging',
-        'pymaging_png'
+        'pillow'
     ],
 
-    dependency_links = [
-        'https://github.com/ojii/pymaging/tarball/master#egg=pymaging-master',
-        'http://github.com/ojii/pymaging-png/tarball/master#egg=pymaging_png-master'
-    ],
     classifiers=[
         'Environment :: Web Environment',
         'Intended Audience :: Developers',
