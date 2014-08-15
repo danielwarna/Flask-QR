@@ -16,8 +16,6 @@ except ImportError:
 
 class QR(object):
 
-    googleurl = "https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=http://www.lifehacker.com"
-
     errorCodes = {
         "L":qrcode.constants.ERROR_CORRECT_L,
         "M":qrcode.constants.ERROR_CORRECT_M,
@@ -57,39 +55,48 @@ class QR(object):
         else:
             app.teardown_request(self.teardown)
 
-    def qrForJinja(self, url, dimension=200):
-        qrUrl = self.qrFor(url, dimension)
+    """
+    Embedds the qr code url in an image tag an scales it.
+    """
+    def qrForJinja(self, message, dimension=200):
+        qrMessage = self.qrFor(message, dimension)
 
         #return url/for the image.
-        return Markup("<img src="+qrUrl+" height=" + str(dimension) + " width="+ str(dimension) + ">")
+        return Markup("<img src="+qrMessage+" height=" + str(dimension) + " width="+ str(dimension) + ">")
 
-    # Function called from jinja
-    def qrFor(self, url, dimension=200):
+    """
+    Returns link to QR code
+    """
+    def qrFor(self, message, dimension=200):
         #Generate/get qr
         qr = ""
         if(self.mode == "google"):
-            print "Generating google qr code " + url
-            qr = self._googleQR(url, dimension)
+            print "Generating google qr code " + message
+            qr = self._googleQR(message, dimension)
         elif(self.mode == "local"):
-            qr = self._localQR(url, dimension)
+            qr = self._localQR(message, dimension)
         
         return qr
 
-
-    def _googleQR(self, url, dimension):
+    """
+    Builds google graph api url
+    """
+    def _googleQR(self, message, dimension):
         if dimension > 540:
             dimension = 540
 
         base = "https://chart.googleapis.com/chart?"
         dimension = "chs=" + str(dimension)+ "x" + str(dimension)
-        qr = "cht=qr&chl=" + urllib.quote_plus(url)
+        qr = "cht=qr&chl=" + urllib.quote_plus(message)
         error = "chld=" + self.errorLevel
         return base + dimension + "&" +  qr + "&" + error +"|" + str(self.margin)
         
-
-    def _localQR(self, url, dimension):
-        url = url.replace("https://", "").replace("http://", "")
-        fileName = urllib.quote_plus(url) + str(dimension) + str(self.margin) +".png"
+    """
+    Checks if a qr code exists, generate it if needed.
+    """
+    def _localQR(self, message, dimension):
+        message = message.replace("https://", "").replace("http://", "")
+        fileName = urllib.quote_plus(message) + str(dimension) + str(self.margin) +".png"
         filePath = os.path.join(self.app.qr_folder, fileName)
         if (os.path.isfile(filePath)):
             print "qr exists, returning url"
@@ -98,7 +105,7 @@ class QR(object):
             #filePath = os.path.join(self.app.qr_folder, fileName)
             f = open(filePath, "w")
             #Generate qr and write it to file.
-            qr = qrcode.make(url, error_correction=self.errorCodes[self.errorLevel], border=self.margin)
+            qr = qrcode.make(message, error_correction=self.errorCodes[self.errorLevel], border=self.margin)
             #qr._img = qr._img.resize(300, 150,resize_canvas=True)1
             qr.save(f)
             f.close()
