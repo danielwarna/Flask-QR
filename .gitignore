@@ -1,3 +1,5 @@
 /static/qr
 /env
 *.pyc
+
+/docs/_build
