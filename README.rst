@@ -36,4 +36,6 @@ Then in your template:
 Documentation
 ~~~~~~~~~~~~~
 
-The full documentation is available here. (TODO, link to docs)
+The full documentation is available here_.
+
+.. _here: http://flask-qr.readthedocs.org/en/latest/
