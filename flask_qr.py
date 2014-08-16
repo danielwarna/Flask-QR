@@ -43,6 +43,9 @@ class QR(object):
         app.extensions['qr'] = self
         app.qr_folder = app.static_folder + location
 
+        if not os.path.exists(app.qr_folder):
+            os.makedirs(app.qr_folder)
+
         app.qr_path = app.static_url_path + location
 
         self.errorLevel = errorCorrect
@@ -115,4 +118,5 @@ class QR(object):
 
 
     def teardown(self, exception):
-        print "Trearing down"
+        pass
+        #print "Trearing down"
