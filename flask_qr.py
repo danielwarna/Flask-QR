@@ -98,7 +98,7 @@ class QR(object):
     Checks if a qr code exists, generate it if needed.
     """
     def _localQR(self, message, dimension):
-        message = message.replace("https://", "").replace("http://", "")
+        message = message.replace("https://", "").replace("http://", "").replace("/","")
         fileName = urllib.quote_plus(message) + str(dimension) + str(self.margin) +".png"
         filePath = os.path.join(self.app.qr_folder, fileName)
         if (os.path.isfile(filePath)):
