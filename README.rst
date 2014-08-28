@@ -39,3 +39,12 @@ Documentation
 The full documentation is available here_.
 
 .. _here: http://flask-qr.readthedocs.org/en/latest/
+
+
+Changelog
+---------
+
+0.1.3 2014-08-29
+~~~~~~~~~~~~~~~~
+
+* Fixed issue #1

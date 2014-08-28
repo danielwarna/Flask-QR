@@ -91,3 +91,11 @@ Options
 .. _`graph api`: https://developers.google.com/chart/infographics/docs/qr_codes#details
 .. _`error correction`: https://developers.google.com/chart/infographics/docs/qr_codes#details
 
+
+Changelog
+---------
+
+0.1.3 2014-08-29
+~~~~~~~~~~~~~~~~
+
+* Fixed issue #1
